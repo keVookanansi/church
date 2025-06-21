@@ -1,4 +1,5 @@
 <?php
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -9,6 +10,12 @@ return [
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
-        'db' => require dirname(__DIR__, 2) . '/common/config/db.php',
+        'db' => [
+            'class' => \yii\db\Connection::class,
+            'dsn' => 'pgsql:host=' . getenv('DB_HOST') . ';port=' . getenv('DB_PORT') . ';dbname=' . getenv('DB_NAME'),
+            'username' => getenv('DB_USERNAME'),
+            'password' => getenv('DB_PASSWORD'),
+            'charset' => 'utf8',
+        ],
     ],
 ];
