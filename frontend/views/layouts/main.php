@@ -107,7 +107,30 @@ use yii\helpers\Url;
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* Dashboard Cards */
+        .dashboard-card {
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: scale(1.03);
+        }
+
+        .dashboard-card .card-body {
+            padding: 15px;
+        }
+
+        .dashboard-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             h2.nav-brand {
                 font-size: 2rem;
@@ -135,7 +158,6 @@ use yii\helpers\Url;
                 padding: 15px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -149,7 +171,33 @@ use yii\helpers\Url;
 </nav>
 
 <main class="container">
-    <?= $content ?>
+    <!-- DASHBOARD CARDS: 3 per row even on mobile -->
+    <div class="row">
+        <div class="col-4 p-2">
+            <div class="card dashboard-card h-100 text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Huduma</h5>
+                    <p class="card-text">Maelezo ya huduma.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 p-2">
+            <div class="card dashboard-card h-100 text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Matukio</h5>
+                    <p class="card-text">Maelezo ya matukio.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 p-2">
+            <div class="card dashboard-card h-100 text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Washirika</h5>
+                    <p class="card-text">Maelezo ya washirika.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer>
