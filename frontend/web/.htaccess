@@ -1,0 +1,8 @@
+RewriteEngine on
+
+# Kama ni file au folder halisi, tumia
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Kinyume chake, peleka kwenye index.php
+RewriteRule . index.php
