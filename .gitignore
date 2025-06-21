@@ -66,9 +66,9 @@ common/mail/
 /tests/_output/
 
 # Web entry points (optional: ignore if not customized)
-frontend/web/index.php
+
 frontend/web/index-test.php
 frontend/web/robots.txt
-backend/web/index.php
+
 backend/web/index-test.php
 backend/web/robots.txt
