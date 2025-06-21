@@ -9,7 +9,7 @@ use yii\helpers\Url;
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-   <meta charset="<?= Yii::$app->charset ?>">
+    <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,36 +18,31 @@ use yii\helpers\Url;
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: white;
+        html, body {
+            height: 100%;
+            margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-top: 40px;
             color: #eee;
-
-            /* Background image added here */
             background-image: url('<?= Url::to('@web/picha/kanisa1.jpg') ?>');
-            background-repeat: no-repeat;
-            background-position: center center;
             background-size: cover;
-            /* Optional: make background image semi-transparent with overlay (if you want) */
-            position: relative;
-            z-index: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding-top: 40px;
         }
 
-        /* Optional overlay to darken background for readability */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.0); /* adjust opacity as needed */
+            background: rgba(0, 0, 0, 0.0);
             z-index: -1;
         }
 
-        /* IZIWA SDA big H2 */
         h2.nav-brand {
             font-weight: 900;
             font-size: 4rem;
-            color: #007bff; /* Blue base */
+            color: #007bff;
             margin-bottom: 0;
             cursor: pointer;
             text-shadow:
@@ -70,7 +65,6 @@ use yii\helpers\Url;
                 0 0 120px #f57f17;
         }
 
-        /* Home, About, Contact as H3 with same style but smaller */
         h3.nav-link {
             font-weight: 900;
             font-size: 2.5rem;
@@ -94,13 +88,14 @@ use yii\helpers\Url;
 
         nav {
             display: flex;
-            gap: 50px;
+            flex-wrap: wrap;
+            gap: 30px;
             align-items: center;
-            padding-left: 30px;
+            padding: 20px;
         }
 
         main.container {
-            margin-top: 50px;
+            margin-top: 30px;
         }
 
         footer {
@@ -112,39 +107,35 @@ use yii\helpers\Url;
             font-size: 0.9rem;
         }
 
-      @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        padding: 20px;
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2.nav-brand {
+                font-size: 2rem;
+                text-align: center;
+            }
 
-    h2.nav-brand {
-        font-size: 2rem;
-        text-align: center;
-    }
+            h3.nav-link {
+                font-size: 1.3rem;
+                text-align: center;
+            }
 
-    h3.nav-link {
-        font-size: 1.5rem;
-        text-align: center;
-    }
+            nav {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
 
-    main.container {
-        margin-top: 20px;
-        padding: 10px;
-    }
+            main.container {
+                margin-top: 20px;
+                padding: 15px;
+            }
 
-    footer {
-        font-size: 0.8rem;
-        padding: 15px;
-    }
+            footer {
+                font-size: 0.8rem;
+                padding: 15px;
+            }
+        }
 
-    body {
-        padding-top: 20px;
-    }
-}
-  
     </style>
 </head>
 <body>
@@ -153,8 +144,8 @@ use yii\helpers\Url;
 <nav>
     <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h2 class="nav-brand">IZIWA SDA CHURCH MANAGEMENT SYSTEM</h2></a>
     <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h3 class="nav-link">Home</h3></a>
-    <a href="<?= \yii\helpers\Url::to(['/site/about']) ?>" style="text-decoration:none;"><h3 class="nav-link">About</h3></a>
-    <a href="<?= \yii\helpers\Url::to(['/site/contact']) ?>" style="text-decoration:none;"><h3 class="nav-link">Contact</h3></a>
+    <a href="<?= Url::to(['/site/about']) ?>" style="text-decoration:none;"><h3 class="nav-link">About</h3></a>
+    <a href="<?= Url::to(['/site/contact']) ?>" style="text-decoration:none;"><h3 class="nav-link">Contact</h3></a>
 </nav>
 
 <main class="container">
