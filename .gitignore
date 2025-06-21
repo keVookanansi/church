@@ -1,13 +1,7 @@
 # ==== SYSTEM CONFIGS ====
-
-# PhpStorm
 .idea/
 *.iml
-
-# NetBeans
 nbproject/
-
-# Zend Studio / Eclipse
 .buildpath
 .project
 .settings/
@@ -18,14 +12,12 @@ nbproject/
 # Node.js
 /node_modules/
 
-# Mac
+# Mac & Windows junk files
 .DS_Store
-
-# Windows
 Thumbs.db
 
-# Composer vendor dir
-/vendor/
+# Composer vendor dir (autoinstall on deployment)
+vendor/
 composer.phar
 
 # PHPUnit
@@ -49,26 +41,18 @@ console/runtime/
 frontend/web/assets/
 backend/web/assets/
 
-# Local config files (usifanye push GitHub)
-common/config/main-local.php
-backend/config/main-local.php
-frontend/config/main-local.php
-console/config/main-local.php
-
-# Environment variables
+# ENVIRONMENT CONFIG (we will use env vars in production)
 .env
 .env.local
 
-# Mail templates
+# Mail templates (optional)
 common/mail/
 
 # Auto-generated test output
 /tests/_output/
 
-# Web entry points (optional: ignore if not customized)
-
+# Optional: exclude test entry scripts, but allow main entry points
 frontend/web/index-test.php
-frontend/web/robots.txt
-
 backend/web/index-test.php
+frontend/web/robots.txt
 backend/web/robots.txt
