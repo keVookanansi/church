@@ -111,6 +111,40 @@ use yii\helpers\Url;
             margin-top: 80px;
             font-size: 0.9rem;
         }
+
+      @media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    h2.nav-brand {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    h3.nav-link {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    main.container {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 15px;
+    }
+
+    body {
+        padding-top: 20px;
+    }
+}
+  
     </style>
 </head>
 <body>
