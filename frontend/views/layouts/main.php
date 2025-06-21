@@ -88,10 +88,12 @@ use yii\helpers\Url;
 
       nav {
          display: flex;
-         gap: 50px;
-         align-items: center;
-         padding-left: 30px;
          flex-wrap: wrap;
+         gap: 30px;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         text-align: center;
       }
 
       main.container {
@@ -107,43 +109,13 @@ use yii\helpers\Url;
          font-size: 0.9rem;
       }
 
-      .dashboard-card img {
-         width: 100%;
-         height: 100px;
-         object-fit: cover;
-         border-top-left-radius: 10px;
-         border-top-right-radius: 10px;
-      }
-
-      .dashboard-card {
-         background: rgba(255, 255, 255, 0.95);
-         color: #000;
-         border-radius: 10px;
-         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-         transition: transform 0.3s ease;
-         height: 100%;
-      }
-
-      .dashboard-card:hover {
-         transform: scale(1.03);
-      }
-
       @media (max-width: 768px) {
-         nav {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
-         }
-
          h2.nav-brand {
             font-size: 2rem;
-            text-align: center;
          }
 
          h3.nav-link {
             font-size: 1.5rem;
-            text-align: center;
          }
 
          main.container {
@@ -173,36 +145,7 @@ use yii\helpers\Url;
 </nav>
 
 <main class="container">
-   <!-- Example dashboard layout -->
-   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-      <div class="col">
-         <div class="card dashboard-card">
-            <img src="<?= Url::to('@web/picha/huduma.jpg') ?>" alt="Huduma">
-            <div class="card-body text-center">
-               <h5 class="card-title">Huduma</h5>
-               <p class="card-text">Maelezo ya huduma.</p>
-            </div>
-         </div>
-      </div>
-      <div class="col">
-         <div class="card dashboard-card">
-            <img src="<?= Url::to('@web/picha/matukio.jpg') ?>" alt="Matukio">
-            <div class="card-body text-center">
-               <h5 class="card-title">Matukio</h5>
-               <p class="card-text">Matukio ya kanisa.</p>
-            </div>
-         </div>
-      </div>
-      <div class="col">
-         <div class="card dashboard-card">
-            <img src="<?= Url::to('@web/picha/washirika.jpg') ?>" alt="Washirika">
-            <div class="card-body text-center">
-               <h5 class="card-title">Washirika</h5>
-               <p class="card-text">Taarifa za washirika.</p>
-            </div>
-         </div>
-      </div>
-   </div>
+   <?= $content ?>
 </main>
 
 <footer>
