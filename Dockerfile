@@ -33,3 +33,8 @@ RUN sed -i 's|AllowOverride None|AllowOverride All|' /etc/apache2/apache2.conf
 
 # Expose HTTP port
 EXPOSE 80
+
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
