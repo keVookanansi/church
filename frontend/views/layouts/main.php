@@ -12,6 +12,8 @@ use yii\helpers\Url;
    <meta charset="<?= Yii::$app->charset ?>">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
    <title><?= Html::encode($this->title) ?></title>
    <?php $this->head() ?>
@@ -98,8 +100,30 @@ use yii\helpers\Url;
 
 <!-- ✅ Footer -->
 <footer>
-   &copy; <?= date('Y') ?> IZIWA SDA Church. Imetengenezwa kwa upendo 💙.
+   <div class="container text-center">
+      <p>&copy; <?= date('Y') ?> IZIWA SDA Church. Imetengenezwa kwa upendo 💙.</p>
+
+      <p class="mb-1">
+         <strong>Wasiliana nasi kupitia:</strong><br>
+         📞 <strong>Mzee wa Kanisa:</strong> <a href="tel:0756123456" class="text-info">0756 123 456</a><br>
+         👦 <strong>Mkuu wa Vijana:</strong> <a href="tel:0778123456" class="text-success">0778 123 456</a><br>
+         🙏 <strong>Mkuu wa Mambo ya Kiroho:</strong> <a href="tel:0897765432" class="text-warning">0897 765 432</a>
+      </p>
+
+      <div class="d-flex justify-content-center gap-3 mt-3">
+         <a href="https://wa.me/255756123456" target="_blank" title="Tuma ujumbe WhatsApp" class="text-white bg-success px-3 py-2 rounded-circle shadow-sm">
+            <i class="bi bi-whatsapp"></i>
+         </a>
+         <a href="https://facebook.com/iziwasdachurch" target="_blank" title="Facebook Page" class="text-white bg-primary px-3 py-2 rounded-circle shadow-sm">
+            <i class="bi bi-facebook"></i>
+         </a>
+         <a href="https://instagram.com/iziwasda" target="_blank" title="Instagram Page" class="text-white bg-danger px-3 py-2 rounded-circle shadow-sm">
+            <i class="bi bi-instagram"></i>
+         </a>
+      </div>
+   </div>
 </footer>
+
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

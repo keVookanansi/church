@@ -66,12 +66,6 @@ $this->title = 'IZIWA SDA CHURCH SYSTEM';
 
 </div>
 
-<!-- ✅ WHATSAPP, FACEBOOK & INSTAGRAM FLOATING BUTTONS -->
-<div class="social-float">
-   <a href="https://wa.me/255712345678" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-   <a href="https://facebook.com/iziwasdachurch" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
-   <a href="https://instagram.com/iziwasda" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
-</div>
 
 <!-- ✅ CUSTOM STYLES -->
 <style>
