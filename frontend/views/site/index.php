@@ -7,6 +7,11 @@ $this->title = 'IZIWA SDA CHURCH SYSTEM';
 ?>
 <div class="site-index">
 
+   <!-- ✅ 3D MODERN TITLE -->
+   <div class="text-center my-4">
+      <h1 class="glow-title">KARIBU KWENYE MFUMO WA KANISA LA WAADVENTISTA WA SABATO IZIWA-MBEYA</h1>
+   </div>
+
    <!-- ✅ IMAGE CAROUSEL -->
    <div id="churchCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
       <div class="carousel-inner rounded shadow">
@@ -61,15 +66,41 @@ $this->title = 'IZIWA SDA CHURCH SYSTEM';
 
 </div>
 
-<!-- ✅ WHATSAPP FLOAT BUTTON -->
-<div class="whatsapp-float">
-   <a href="https://wa.me/255712345678" target="_blank" title="Tuma ujumbe WhatsApp">
-      📞
-   </a>
+<!-- ✅ WHATSAPP, FACEBOOK & INSTAGRAM FLOATING BUTTONS -->
+<div class="social-float">
+   <a href="https://wa.me/255712345678" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+   <a href="https://facebook.com/iziwasdachurch" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+   <a href="https://instagram.com/iziwasda" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
 </div>
 
 <!-- ✅ CUSTOM STYLES -->
 <style>
+   .glow-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #007bff;
+      text-shadow:
+         1px 1px 2px #ffeb3b,
+         2px 2px 5px #fdd835,
+         3px 3px 10px #fbc02d,
+         4px 4px 20px #f57f17;
+      animation: glow 2s ease-in-out infinite alternate;
+   }
+
+   @keyframes glow {
+      from {
+         text-shadow:
+            1px 1px 2px #ffeb3b,
+            2px 2px 5px #fdd835;
+      }
+      to {
+         text-shadow:
+            1px 1px 2px #fff176,
+            2px 2px 10px #fbc02d,
+            3px 3px 20px #f57f17;
+      }
+   }
+
    .dashboard-card {
       border-radius: 15px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
@@ -81,25 +112,27 @@ $this->title = 'IZIWA SDA CHURCH SYSTEM';
       object-fit: cover;
    }
 
-   .whatsapp-float {
+   .social-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       z-index: 999;
    }
 
-   .whatsapp-float a {
-      background: #25D366;
+   .social-float a {
+      background: #007bff;
       color: white;
-      padding: 12px 16px;
+      padding: 10px 13px;
       border-radius: 50%;
-      font-size: 24px;
+      font-size: 20px;
       text-align: center;
       box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      display: inline-block;
    }
 
-   .whatsapp-float a:hover {
+   .social-float a:hover {
       transform: scale(1.1);
    }
 
@@ -107,5 +140,11 @@ $this->title = 'IZIWA SDA CHURCH SYSTEM';
       .carousel-inner img {
          height: 220px;
       }
+      .glow-title {
+         font-size: 1.3rem;
+      }
    }
 </style>
+
+<!-- ✅ Bootstrap Icons CDN (for social icons) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
