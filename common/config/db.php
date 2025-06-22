@@ -1,8 +1,17 @@
 <?php
+
+$url = getenv('DATABASE_URL');
+
+if (!$url) {
+    throw new \Exception('DATABASE_URL is not set in environment variables');
+}
+
+$parsed = parse_url($url);
+
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'pgsql:host=localhost;port=5432;dbname=kanisadb',
-    'username' => 'postgres',       // Badilisha hii na user yako halisi
-    'password' => 'willy',  // Badilisha hii na password yako halisi
+    'dsn' => 'pgsql:host=' . $parsed['host'] . ';port=' . ($parsed['port'] ?? 5432) . ';dbname=' . ltrim($parsed['path'], '/'),
+    'username' => $parsed['user'],
+    'password' => $parsed['pass'],
     'charset' => 'utf8',
 ];
