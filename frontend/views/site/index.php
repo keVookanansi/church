@@ -2,230 +2,110 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-/** @var \yii\web\View $this */
-/** @var string $content */
+/** @var yii\web\View $this */
+$this->title = 'IZIWA SDA CHURCH SYSTEM';
 ?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-   <meta charset="<?= Yii::$app->charset ?>">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="site-index">
 
-   <title><?= Html::encode($this->title) ?></title>
-   <?php $this->head() ?>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-   <style>
-      body {
-         background-color: white;
-         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-         padding-top: 40px;
-         color: #eee;
-         position: relative;
-         z-index: 0;
-      }
+   <!-- ✅ IMAGE CAROUSEL -->
+   <div id="churchCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner rounded shadow">
+         <div class="carousel-item active">
+            <img src="<?= Url::to('@web/picha/kanisa1.jpg') ?>" class="d-block w-100" alt="Kanisa 1">
+         </div>
+         <div class="carousel-item">
+            <img src="<?= Url::to('@web/picha/kanisa2.jpg') ?>" class="d-block w-100" alt="Kanisa 2">
+         </div>
+         <div class="carousel-item">
+            <img src="<?= Url::to('@web/picha/kanisa3.jpg') ?>" class="d-block w-100" alt="Kanisa 3">
+         </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#churchCarousel" data-bs-slide="prev">
+         <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#churchCarousel" data-bs-slide="next">
+         <span class="carousel-control-next-icon"></span>
+      </button>
+   </div>
 
-      h2.nav-brand {
-         font-weight: 900;
-         font-size: 4rem;
-         color: #007bff;
-         margin-bottom: 0;
-         cursor: pointer;
-         text-shadow:
-            3px 3px 0 #ffeb3b,
-            6px 6px 10px #fdd835,
-            9px 9px 15px #fbc02d,
-            12px 12px 20px #f9a825,
-            15px 15px 25px #f57f17;
-         transition: color 0.3s ease, text-shadow 0.3s ease;
-      }
-
-      h2.nav-brand:hover {
-         color: #3399ff;
-         text-shadow:
-            0 0 20px #fff176,
-            0 0 40px #ffeb3b,
-            0 0 60px #fdd835,
-            0 0 80px #fbc02d,
-            0 0 100px #f9a825,
-            0 0 120px #f57f17;
-      }
-
-      h3.nav-link {
-         font-weight: 900;
-         font-size: 2.5rem;
-         color: #007bff;
-         margin-bottom: 0;
-         cursor: pointer;
-         text-shadow:
-            2px 2px 0 #ffeb3b,
-            4px 4px 8px #fdd835,
-            6px 6px 12px #fbc02d;
-         transition: color 0.3s ease, text-shadow 0.3s ease;
-      }
-
-      h3.nav-link:hover {
-         color: #3399ff;
-         text-shadow:
-            0 0 15px #fff176,
-            0 0 30px #ffeb3b,
-            0 0 45px #fdd835;
-      }
-
-      nav {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 30px;
-         align-items: center;
-         justify-content: center;
-         padding: 20px;
-         text-align: center;
-      }
-
-      .static-images {
-         margin: 30px auto;
-         max-width: 1200px;
-         padding: 0 20px;
-      }
-
-      .static-images .img-wrapper {
-         position: relative;
-         width: 100%;
-         padding-top: 56.25%; /* Aspect Ratio 16:9 */
-         overflow: hidden;
-         border-radius: 15px;
-         box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-         margin-bottom: 20px;
-      }
-
-      .static-images img {
-         position: absolute;
-         top: 0; left: 0;
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         transition: transform 0.3s ease;
-      }
-
-      .static-images img:hover {
-         transform: scale(1.03);
-      }
-
-      .dashboard-card {
-         background: #fff;
-         border-radius: 15px;
-         box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-         text-align: center;
-         padding: 20px;
-         margin-bottom: 30px;
-         color: #333;
-         min-height: 250px;
-         display: flex;
-         flex-direction: column;
-         justify-content: space-between;
-      }
-
-      main.container {
-         margin-top: 50px;
-      }
-
-      footer {
-         background: #212529;
-         color: #ccc;
-         text-align: center;
-         padding: 20px 0;
-         margin-top: 80px;
-         font-size: 0.9rem;
-      }
-
-      @media (max-width: 768px) {
-         h2.nav-brand {
-            font-size: 2rem;
-         }
-
-         h3.nav-link {
-            font-size: 1.5rem;
-         }
-
-         main.container {
-            margin-top: 20px;
-            padding: 10px;
-         }
-
-         footer {
-            font-size: 0.8rem;
-            padding: 15px;
-         }
-
-         body {
-            padding-top: 20px;
-         }
-      }
-   </style>
-</head>
-<body>
-<?php $this->beginBody() ?>
-
-<nav>
-   <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h2 class="nav-brand">IZIWA SDA CHURCH MANAGEMENT SYSTEM</h2></a>
-   <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h3 class="nav-link">Home</h3></a>
-   <a href="<?= Url::to(['/site/about']) ?>" style="text-decoration:none;"><h3 class="nav-link">About</h3></a>
-   <a href="<?= Url::to(['/site/contact']) ?>" style="text-decoration:none;"><h3 class="nav-link">Contact</h3></a>
-</nav>
-
-<!-- ✅ Static Image Gallery (Now with Proper Aspect Ratio) -->
-<div class="static-images row">
-   <div class="col-md-4 col-sm-6 col-12">
-      <div class="img-wrapper">
-         <img src="<?= Url::to('@web/picha/kanisa1.jpg') ?>" alt="Kanisa 1">
+   <!-- ✅ DASHBOARD CARDS -->
+   <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
+         <div class="card dashboard-card">
+            <div class="card-body text-center">
+               <h5 class="card-title">Matukio</h5>
+               <p class="card-text">Ratiba ya mikutano na ibada.</p>
+               <a href="<?= Url::to(['/matukio/index']) ?>" class="btn btn-outline-primary">Fungua</a>
+            </div>
+         </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
+         <div class="card dashboard-card">
+            <div class="card-body text-center">
+               <h5 class="card-title">Huduma</h5>
+               <p class="card-text">Huduma mbalimbali za kanisa.</p>
+               <a href="<?= Url::to(['/huduma/index']) ?>" class="btn btn-outline-success">Angalia</a>
+            </div>
+         </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
+         <div class="card dashboard-card">
+            <div class="card-body text-center">
+               <h5 class="card-title">Matangazo</h5>
+               <p class="card-text">Habari na matangazo rasmi ya kanisa.</p>
+               <a href="<?= Url::to(['/matangazo/index']) ?>" class="btn btn-outline-warning">Soma</a>
+            </div>
+         </div>
       </div>
    </div>
-   <div class="col-md-4 col-sm-6 col-12">
-      <div class="img-wrapper">
-         <img src="<?= Url::to('@web/picha/kanisa2.jpg') ?>" alt="Kanisa 2">
-      </div>
-   </div>
-   <div class="col-md-4 col-sm-6 col-12">
-      <div class="img-wrapper">
-         <img src="<?= Url::to('@web/picha/kanisa3.jpg') ?>" alt="Kanisa 3">
-      </div>
-   </div>
+
 </div>
 
-<!-- ✅ Main Content & Dashboard Cards -->
-<main class="container">
-   <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-         <div class="dashboard-card">
-            <h5>Matukio</h5>
-            <p>Ratiba ya mikutano na ibada.</p>
-            <a href="<?= Url::to(['/matukio/index']) ?>" class="btn btn-outline-primary">Fungua</a>
-         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-         <div class="dashboard-card">
-            <h5>Huduma</h5>
-            <p>Huduma mbalimbali za kanisa.</p>
-            <a href="<?= Url::to(['/huduma/index']) ?>" class="btn btn-outline-success">Angalia</a>
-         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-         <div class="dashboard-card">
-            <h5>Matangazo</h5>
-            <p>Habari na matangazo rasmi ya kanisa.</p>
-            <a href="<?= Url::to(['/matangazo/index']) ?>" class="btn btn-outline-warning">Soma</a>
-         </div>
-      </div>
-   </div>
-</main>
+<!-- ✅ WHATSAPP FLOAT BUTTON -->
+<div class="whatsapp-float">
+   <a href="https://wa.me/255712345678" target="_blank" title="Tuma ujumbe WhatsApp">
+      📞
+   </a>
+</div>
 
-<footer>
-   &copy; <?= date('Y') ?> IZIWA SDA Church. All rights reserved.
-</footer>
+<!-- ✅ CUSTOM STYLES -->
+<style>
+   .dashboard-card {
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+   }
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
+   .carousel-inner img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+   }
+
+   .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+   }
+
+   .whatsapp-float a {
+      background: #25D366;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 24px;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      display: inline-block;
+   }
+
+   .whatsapp-float a:hover {
+      transform: scale(1.1);
+   }
+
+   @media (max-width: 768px) {
+      .carousel-inner img {
+         height: 220px;
+      }
+   }
+</style>
