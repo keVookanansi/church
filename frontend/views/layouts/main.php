@@ -19,115 +19,49 @@ use yii\helpers\Url;
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
    <style>
       body {
-         background-color: white;
          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-         padding-top: 40px;
-         color: #eee;
-         position: relative;
-         z-index: 0;
+         background-color: #f8f9fa;
+         margin: 0;
+         padding-top: 70px;
       }
 
-      h2.nav-brand {
+      .navbar-brand {
          font-weight: 900;
-         font-size: 4rem;
-         color: #007bff;
-         margin-bottom: 0;
-         cursor: pointer;
-         text-shadow:
-            3px 3px 0 #ffeb3b,
-            6px 6px 10px #fdd835,
-            9px 9px 15px #fbc02d,
-            12px 12px 20px #f9a825,
-            15px 15px 25px #f57f17;
-         transition: color 0.3s ease, text-shadow 0.3s ease;
+         font-size: 1.8rem;
+         color: #007bff !important;
       }
 
-      h2.nav-brand:hover {
-         color: #3399ff;
-         text-shadow:
-            0 0 20px #fff176,
-            0 0 40px #ffeb3b,
-            0 0 60px #fdd835,
-            0 0 80px #fbc02d,
-            0 0 100px #f9a825,
-            0 0 120px #f57f17;
+      .nav-link {
+         font-weight: 600;
+         color: #555 !important;
       }
 
-      h3.nav-link {
-         font-weight: 900;
-         font-size: 2.5rem;
-         color: #007bff;
-         margin-bottom: 0;
-         cursor: pointer;
-         text-shadow:
-            2px 2px 0 #ffeb3b,
-            4px 4px 8px #fdd835,
-            6px 6px 12px #fbc02d;
-         transition: color 0.3s ease, text-shadow 0.3s ease;
+      .nav-link:hover {
+         color: #007bff !important;
       }
 
-      h3.nav-link:hover {
-         color: #3399ff;
-         text-shadow:
-            0 0 15px #fff176,
-            0 0 30px #ffeb3b,
-            0 0 45px #fdd835;
+      .card-custom {
+         border: none;
+         border-radius: 16px;
+         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+         transition: transform 0.3s ease;
       }
 
-      nav {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 30px;
-         align-items: center;
-         justify-content: center;
-         padding: 20px;
-         text-align: center;
-      }
-
-      .carousel-inner img {
-         width: 100%;
-         height: 500px;
-         object-fit: cover;
-      }
-
-      main.container {
-         margin-top: 50px;
+      .card-custom:hover {
+         transform: translateY(-5px);
       }
 
       footer {
-         background: #212529;
+         background: #343a40;
          color: #ccc;
          text-align: center;
          padding: 20px 0;
-         margin-top: 80px;
-         font-size: 0.9rem;
+         margin-top: 40px;
       }
 
       @media (max-width: 768px) {
-         h2.nav-brand {
-            font-size: 2rem;
-         }
-
-         h3.nav-link {
-            font-size: 1.5rem;
-         }
-
-         main.container {
-            margin-top: 20px;
-            padding: 10px;
-         }
-
-         footer {
-            font-size: 0.8rem;
-            padding: 15px;
-         }
-
-         .carousel-inner img {
-            height: 250px;
-         }
-
-         body {
-            padding-top: 20px;
+         .navbar-brand {
+            font-size: 1.4rem;
          }
       }
    </style>
@@ -135,37 +69,40 @@ use yii\helpers\Url;
 <body>
 <?php $this->beginBody() ?>
 
-<nav>
-   <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h2 class="nav-brand">IZIWA SDA CHURCH MANAGEMENT SYSTEM</h2></a>
-   <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h3 class="nav-link">Home</h3></a>
-   <a href="<?= Url::to(['/site/about']) ?>" style="text-decoration:none;"><h3 class="nav-link">About</h3></a>
-   <a href="<?= Url::to(['/site/contact']) ?>" style="text-decoration:none;"><h3 class="nav-link">Contact</h3></a>
-</nav>
-
-<!-- ✅ Image Carousel Starts Here -->
-<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-   <div class="carousel-inner">
-      <div class="carousel-item active">
-         <img src="<?= Url::to('@web/picha/kanisa1.jpg') ?>" class="d-block w-100" alt="Kanisa 1">
-      </div>
-      <div class="carousel-item">
-         <img src="<?= Url::to('@web/picha/kanisa2.jpg') ?>" class="d-block w-100" alt="Kanisa 2">
-      </div>
-      <div class="carousel-item">
-         <img src="<?= Url::to('@web/picha/kanisa3.jpg') ?>" class="d-block w-100" alt="Kanisa 3">
+<!-- ✅ Smart Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+   <div class="container">
+      <a class="navbar-brand" href="<?= Yii::$app->homeUrl ?>">IZIWA SDA CMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+               <a class="nav-link" href="<?= Yii::$app->homeUrl ?>">Home</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="<?= Url::to(['/site/about']) ?>">About</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="<?= Url::to(['/site/contact']) ?>">Contact</a>
+            </li>
+         </ul>
       </div>
    </div>
-</div>
-<!-- ✅ Image Carousel Ends Here -->
+</nav>
 
-<main class="container">
+<!-- ✅ Main Container -->
+<main class="container mt-4">
    <?= $content ?>
 </main>
 
+<!-- ✅ Footer -->
 <footer>
-   &copy; <?= date('Y') ?> IZIWA SDA Church. All rights reserved.
+   &copy; <?= date('Y') ?> IZIWA SDA Church. Imetengenezwa kwa upendo 💙.
 </footer>
 
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <?php $this->endBody() ?>
 </body>

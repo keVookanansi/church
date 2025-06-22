@@ -15,6 +15,36 @@ use yii\helpers\Url;
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e8f0ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            font-weight: 900;
+            font-size: 4.5rem;
+            color: brown;
+            text-shadow: 3px 3px 0 #ffeb3b, 6px 6px 10px #fdd835, 9px 9px 20px #fbc02d;
+            letter-spacing: 5px;
+            user-select: none;
+            pointer-events: none;
+        }
+
         .scroll-box {
             width: 100%;
             overflow: hidden;
@@ -41,136 +71,6 @@ use yii\helpers\Url;
             100% {
                 transform: translateX(-100%);
             }
-        }
-
-        body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #e8f0ff, #ffffff);
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 90vh;
-            max-width: 100vw;
-            overflow: hidden;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 0 15px;
-        }
-
-        .slider {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            height: 90vh;
-            overflow: visible;
-            perspective: 1500px;
-            user-select: none;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 90vh;
-            top: 0;
-            left: 0;
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-            filter: brightness(1.1);
-            backface-visibility: hidden;
-            transition: transform 1s ease, opacity 1s ease;
-        }
-
-        .slide.hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: translateX(100%) rotateY(-60deg);
-        }
-
-        .slide.active {
-            opacity: 1;
-            pointer-events: all;
-            transform: translateX(0) rotateY(0deg);
-            z-index: 10;
-        }
-
-        .hero-text {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            font-weight: 900;
-            font-size: 4.5rem;
-            color: brown;
-            text-shadow: 3px 3px 0 #ffeb3b, 6px 6px 10px #fdd835, 9px 9px 20px #fbc02d;
-            letter-spacing: 5px;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .hero-subtext {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #eee;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            user-select: none;
-            pointer-events: none;
-        }
-
-        @keyframes pageFlipIn {
-            0% {
-                transform: rotateY(-90deg);
-                opacity: 0;
-            }
-            100% {
-                transform: rotateY(0deg);
-                opacity: 1;
-            }
-        }
-
-        .slide.active {
-            animation: pageFlipIn 1s ease forwards;
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 30;
-        }
-
-        .dot {
-            width: 16px;
-            height: 16px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-        }
-
-        .dot.active {
-            background-color: #ffd600;
-            box-shadow: 0 0 15px #ffd600;
         }
 
         .section-title {
@@ -280,38 +180,47 @@ use yii\helpers\Url;
                 font-size: 2.8rem;
                 letter-spacing: 3px;
             }
-            .hero-subtext {
-                font-size: 1.2rem;
-            }
+
             .dashboard-card {
                 padding: 1.5rem 1rem;
             }
+
             .card-icon {
                 font-size: 2.8rem;
                 margin-bottom: 15px;
+            }
+
+            .row.g-4 > [class*='col-'] {
+                flex: 0 0 33.3333%;
+                max-width: 33.3333%;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <div class="slider" id="slider">
-        <div class="slide active" style="background-image: url('<?= Yii::getAlias("@web") ?>/picha/kanisa1.jpg');"></div>
-        <div class="slide hidden" style="background-image: url('<?= Yii::getAlias("@web") ?>/picha/kanisa2.jpg');"></div>
-        <div class="slide hidden" style="background-image: url('<?= Yii::getAlias("@web") ?>/picha/kanisa3.jpg');"></div>
-        <div class="slide hidden" style="background-image: url('<?= Yii::getAlias("@web") ?>/picha/kanisa4.jpg');"></div>
-        <div class="slide hidden" style="background-image: url('<?= Yii::getAlias("@web") ?>/picha/kanisa5.jpg');"></div>
+<!-- HERO SECTION: Bootstrap Carousel -->
+<section class="position-relative">
+    <div id="carouselHero" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa1.jpg" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa2.jpg" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa3.jpg" alt="Slide 3">
+            </div>
+            <div class="carousel-item">
+                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa4.jpg" alt="Slide 4">
+            </div>
+            <div class="carousel-item">
+                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa5.jpg" alt="Slide 5">
+            </div>
+        </div>
     </div>
     <h1 class="hero-text">Karibu Kanisa la Waadventista Wasabato Iziwa</h1>
-    <div class="slider-dots" id="slider-dots">
-        <div class="dot active" data-index="0"></div>
-        <div class="dot" data-index="1"></div>
-        <div class="dot" data-index="2"></div>
-        <div class="dot" data-index="3"></div>
-        <div class="dot" data-index="4"></div>
-    </div>
 </section>
 
 <!-- DASHBOARD SECTION -->
@@ -319,38 +228,33 @@ use yii\helpers\Url;
     <div class="scroll-box">
         <div class="scroll-text">📚Dashibodi ya Kanisa la waadventista wa sabato IZIWA-MBEYA,TANZANIA</div>
     </div>
-    <div class="row g-4">
-        <!-- Matukio -->
-        <div class="col-md-4">
-            <div class="card dashboard-card h-100 text-center">
+    <div class="row g-4 text-center">
+        <div class="col-md-4 col-sm-4 col-4">
+            <div class="card dashboard-card h-100">
                 <div class="card-icon"><i class="bi bi-calendar2-check-fill"></i></div>
                 <h5>Matukio</h5>
                 <p>Ratiba ya mikutano, ubatizo, na shughuli muhimu za kanisa.</p>
                 <a href="<?= Url::to(['matukio/index']) ?>" class="btn btn-outline-primary w-100">Fungua</a>
             </div>
         </div>
-        <!-- Huduma -->
-        <div class="col-md-4">
-            <div class="card dashboard-card h-100 text-center">
+        <div class="col-md-4 col-sm-4 col-4">
+            <div class="card dashboard-card h-100">
                 <div class="card-icon"><i class="bi bi-heart-pulse-fill"></i></div>
                 <h5>Huduma</h5>
                 <p>Huduma za vijana, wamama, wanaume, na vikundi mbalimbali.</p>
                 <a href="<?= Url::to(['huduma/index']) ?>" class="btn btn-outline-success w-100">Angalia</a>
             </div>
         </div>
-        <!-- Matangazo -->
-<div class="col-md-4">
-    <div class="card dashboard-card h-100 text-center">
-        <div class="card-icon"><i class="bi bi-megaphone-fill"></i></div>
-        <h5>Matangazo</h5>
-        <p>Tangazo rasmi la kanisa linalohusu tukio au taarifa maalum.</p>
-        <a href="<?= Url::to(['matangazo/index']) ?>" class="btn btn-outline-primary w-100">Tazama Matangazo</a>
-    </div>
-</div>
-
-        <!-- Washirika -->
-        <div class="col-md-4">
-            <div class="card dashboard-card h-100 text-center">
+        <div class="col-md-4 col-sm-4 col-4">
+            <div class="card dashboard-card h-100">
+                <div class="card-icon"><i class="bi bi-megaphone-fill"></i></div>
+                <h5>Matangazo</h5>
+                <p>Tangazo rasmi la kanisa linalohusu tukio au taarifa maalum.</p>
+                <a href="<?= Url::to(['matangazo/index']) ?>" class="btn btn-outline-primary w-100">Tazama Matangazo</a>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-4">
+            <div class="card dashboard-card h-100">
                 <div class="card-icon"><i class="bi bi-people-fill"></i></div>
                 <h5>Washirika</h5>
                 <p>Orodha na taarifa muhimu za washirika wetu wa Iziwa.</p>
@@ -374,39 +278,6 @@ use yii\helpers\Url;
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-            slide.classList.toggle('hidden', i !== index);
-        });
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-        currentIndex = index;
-    }
-
-    let slideInterval = setInterval(() => {
-        let nextIndex = (currentIndex + 1) % totalSlides;
-        showSlide(nextIndex);
-    }, 6000);
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            clearInterval(slideInterval);
-            showSlide(parseInt(dot.dataset.index));
-            slideInterval = setInterval(() => {
-                let nextIndex = (currentIndex + 1) % totalSlides;
-                showSlide(nextIndex);
-            }, 6000);
-        });
-    });
-</script>
 
 </body>
 </html>
