@@ -23,20 +23,8 @@ use yii\helpers\Url;
          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
          padding-top: 40px;
          color: #eee;
-         background-image: url('<?= Url::to('@web/picha/kanisa1.jpg') ?>');
-         background-repeat: no-repeat;
-         background-position: center center;
-         background-size: cover;
          position: relative;
          z-index: 0;
-      }
-
-      body::before {
-         content: "";
-         position: fixed;
-         top: 0; left: 0; right: 0; bottom: 0;
-         background: rgba(0, 0, 0, 0.0);
-         z-index: -1;
       }
 
       h2.nav-brand {
@@ -96,6 +84,12 @@ use yii\helpers\Url;
          text-align: center;
       }
 
+      .carousel-inner img {
+         width: 100%;
+         height: 500px;
+         object-fit: cover;
+      }
+
       main.container {
          margin-top: 50px;
       }
@@ -128,6 +122,10 @@ use yii\helpers\Url;
             padding: 15px;
          }
 
+         .carousel-inner img {
+            height: 250px;
+         }
+
          body {
             padding-top: 20px;
          }
@@ -143,6 +141,22 @@ use yii\helpers\Url;
    <a href="<?= Url::to(['/site/about']) ?>" style="text-decoration:none;"><h3 class="nav-link">About</h3></a>
    <a href="<?= Url::to(['/site/contact']) ?>" style="text-decoration:none;"><h3 class="nav-link">Contact</h3></a>
 </nav>
+
+<!-- ✅ Image Carousel Starts Here -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+   <div class="carousel-inner">
+      <div class="carousel-item active">
+         <img src="<?= Url::to('@web/picha/kanisa1.jpg') ?>" class="d-block w-100" alt="Kanisa 1">
+      </div>
+      <div class="carousel-item">
+         <img src="<?= Url::to('@web/picha/kanisa2.jpg') ?>" class="d-block w-100" alt="Kanisa 2">
+      </div>
+      <div class="carousel-item">
+         <img src="<?= Url::to('@web/picha/kanisa3.jpg') ?>" class="d-block w-100" alt="Kanisa 3">
+      </div>
+   </div>
+</div>
+<!-- ✅ Image Carousel Ends Here -->
 
 <main class="container">
    <?= $content ?>
