@@ -15,7 +15,6 @@ use yii\helpers\Url;
 
    <title><?= Html::encode($this->title) ?></title>
    <?php $this->head() ?>
-   <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
    <style>
       body {
@@ -73,7 +72,7 @@ use yii\helpers\Url;
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
    <div class="container">
       <a class="navbar-brand" href="<?= Yii::$app->homeUrl ?>">IZIWA SDA CMS</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -104,6 +103,21 @@ use yii\helpers\Url;
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ✅ Toggle collapse menu on second click -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+   const toggler = document.querySelector('.navbar-toggler');
+   const collapse = document.querySelector('#navbarNav');
+
+   toggler.addEventListener('click', function () {
+      if (collapse.classList.contains('show')) {
+         new bootstrap.Collapse(collapse, { toggle: true }).hide();
+      }
+   });
+});
+</script>
+
 <?php $this->endBody() ?>
 </body>
 </html>
