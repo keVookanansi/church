@@ -1,16 +1,12 @@
 services:
-- type: web
-  name: iziwa-sda-church
-  runtime: docker
-  repo: https://github.com/keVookanansi/church
-  plan: free
-  envVars:
-    - key: DATABASE_URL
-      fromDatabase:
-        name: kanisadb
-        property: connectionString
-  region: frankfurt
-  dockerContext: .
-  dockerfilePath: ./Dockerfile
-  autoDeployTrigger: commit
-version: "1"
+  - type: web
+    name: production
+    runtime: docker
+    repo: https://github.com/keVookanansi/church
+    envVars:
+      - fromGroup: kanisa
+    region: frankfurt
+    plan: free
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
