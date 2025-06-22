@@ -1,283 +1,231 @@
 <?php
+use yii\helpers\Html;
 use yii\helpers\Url;
+
+/** @var \yii\web\View $this */
+/** @var string $content */
 ?>
-
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="UTF-8">
-    <title>⛪ Kanisa la Kisasa Iziwa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="<?= Yii::$app->charset ?>">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap & Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+   <title><?= Html::encode($this->title) ?></title>
+   <?php $this->head() ?>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <style>
+      body {
+         background-color: white;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         padding-top: 40px;
+         color: #eee;
+         position: relative;
+         z-index: 0;
+      }
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+      h2.nav-brand {
+         font-weight: 900;
+         font-size: 4rem;
+         color: #007bff;
+         margin-bottom: 0;
+         cursor: pointer;
+         text-shadow:
+            3px 3px 0 #ffeb3b,
+            6px 6px 10px #fdd835,
+            9px 9px 15px #fbc02d,
+            12px 12px 20px #f9a825,
+            15px 15px 25px #f57f17;
+         transition: color 0.3s ease, text-shadow 0.3s ease;
+      }
 
-        body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #e8f0ff, #ffffff);
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
+      h2.nav-brand:hover {
+         color: #3399ff;
+         text-shadow:
+            0 0 20px #fff176,
+            0 0 40px #ffeb3b,
+            0 0 60px #fdd835,
+            0 0 80px #fbc02d,
+            0 0 100px #f9a825,
+            0 0 120px #f57f17;
+      }
 
-        .carousel-item img {
-            width: 100%;
-            height: 90vh;
-            object-fit: cover;
-        }
+      h3.nav-link {
+         font-weight: 900;
+         font-size: 2.5rem;
+         color: #007bff;
+         margin-bottom: 0;
+         cursor: pointer;
+         text-shadow:
+            2px 2px 0 #ffeb3b,
+            4px 4px 8px #fdd835,
+            6px 6px 12px #fbc02d;
+         transition: color 0.3s ease, text-shadow 0.3s ease;
+      }
 
-        .hero-text {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            font-weight: 900;
-            font-size: 4.5rem;
-            color: brown;
-            text-shadow: 3px 3px 0 #ffeb3b, 6px 6px 10px #fdd835, 9px 9px 20px #fbc02d;
-            letter-spacing: 5px;
-            user-select: none;
-            pointer-events: none;
-        }
+      h3.nav-link:hover {
+         color: #3399ff;
+         text-shadow:
+            0 0 15px #fff176,
+            0 0 30px #ffeb3b,
+            0 0 45px #fdd835;
+      }
 
-        .scroll-box {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            background: transparent;
-            border: none;
-            height: 60px;
-            position: relative;
-        }
+      nav {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 30px;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         text-align: center;
+      }
 
-        .scroll-text {
-            display: inline-block;
+      .static-images {
+         margin: 30px auto;
+         max-width: 1200px;
+         padding: 0 20px;
+      }
+
+      .static-images .img-wrapper {
+         position: relative;
+         width: 100%;
+         padding-top: 56.25%; /* Aspect Ratio 16:9 */
+         overflow: hidden;
+         border-radius: 15px;
+         box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+         margin-bottom: 20px;
+      }
+
+      .static-images img {
+         position: absolute;
+         top: 0; left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: transform 0.3s ease;
+      }
+
+      .static-images img:hover {
+         transform: scale(1.03);
+      }
+
+      .dashboard-card {
+         background: #fff;
+         border-radius: 15px;
+         box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+         text-align: center;
+         padding: 20px;
+         margin-bottom: 30px;
+         color: #333;
+         min-height: 250px;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+      }
+
+      main.container {
+         margin-top: 50px;
+      }
+
+      footer {
+         background: #212529;
+         color: #ccc;
+         text-align: center;
+         padding: 20px 0;
+         margin-top: 80px;
+         font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+         h2.nav-brand {
             font-size: 2rem;
-            font-weight: bold;
-            color: #003366;
-            animation: scroll-left 30s linear infinite;
-            padding-left: 100%;
-        }
+         }
 
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(0%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
+         h3.nav-link {
+            font-size: 1.5rem;
+         }
 
-        .section-title {
-            text-align: center;
-            font-weight: 700;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            color: #003366;
-            letter-spacing: 1px;
-        }
+         main.container {
+            margin-top: 20px;
+            padding: 10px;
+         }
 
-        .dashboard-card {
-            border: none;
-            border-radius: 20px;
-            background: #ffffff;
-            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11),
-                        0 1px 3px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            padding: 2rem 1.5rem;
-        }
+         footer {
+            font-size: 0.8rem;
+            padding: 15px;
+         }
 
-        .dashboard-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 10px 20px rgba(50, 50, 93, 0.2),
-                        0 6px 6px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-icon {
-            font-size: 3.5rem;
-            color: #0d6efd;
-            margin-bottom: 20px;
-            transition: color 0.3s ease;
-        }
-
-        .dashboard-card:hover .card-icon {
-            color: #ffc107;
-        }
-
-        .dashboard-card h5 {
-            font-weight: 700;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            color: #003366;
-        }
-
-        .dashboard-card p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            min-height: 65px;
-        }
-
-        .dashboard-card a.btn {
-            font-weight: 600;
-            border-radius: 50px;
-            padding: 0.5rem 1.5rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .dashboard-card a.btn-outline-primary:hover {
-            background-color: #0d6efd;
-            color: white;
-            border-color: #0d6efd;
-        }
-
-        .dashboard-card a.btn-outline-success:hover {
-            background-color: #198754;
-            color: white;
-            border-color: #198754;
-        }
-
-        .dashboard-card a.btn-outline-info:hover {
-            background-color: #0dcaf0;
-            color: white;
-            border-color: #0dcaf0;
-        }
-
-        .quick-links {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .quick-links a {
-            margin: 0 15px;
-            font-size: 2rem;
-            color: #0d6efd;
-            transition: color 0.3s ease;
-        }
-
-        .quick-links a:hover {
-            color: #ffc107;
-        }
-
-        .footer {
-            background: #003366;
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-            font-size: 1rem;
-            margin-top: 60px;
-            user-select: none;
-        }
-
-        @media (max-width: 768px) {
-            .hero-text {
-                font-size: 2.8rem;
-                letter-spacing: 3px;
-            }
-
-            .dashboard-card {
-                padding: 1.5rem 1rem;
-            }
-
-            .card-icon {
-                font-size: 2.8rem;
-                margin-bottom: 15px;
-            }
-
-            .row.g-4 > [class*='col-'] {
-                flex: 0 0 33.3333%;
-                max-width: 33.3333%;
-            }
-        }
-    </style>
+         body {
+            padding-top: 20px;
+         }
+      }
+   </style>
 </head>
 <body>
+<?php $this->beginBody() ?>
 
-<!-- HERO SECTION: Bootstrap Carousel -->
-<section class="position-relative">
-    <div id="carouselHero" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa1.jpg" alt="Slide 1">
-            </div>
-            <div class="carousel-item">
-                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa2.jpg" alt="Slide 2">
-            </div>
-            <div class="carousel-item">
-                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa3.jpg" alt="Slide 3">
-            </div>
-            <div class="carousel-item">
-                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa4.jpg" alt="Slide 4">
-            </div>
-            <div class="carousel-item">
-                <img src="<?= Yii::getAlias("@web") ?>/picha/kanisa5.jpg" alt="Slide 5">
-            </div>
-        </div>
-    </div>
-    <h1 class="hero-text">Karibu Kanisa la Waadventista Wasabato Iziwa</h1>
-</section>
+<nav>
+   <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h2 class="nav-brand">IZIWA SDA CHURCH MANAGEMENT SYSTEM</h2></a>
+   <a href="<?= Yii::$app->homeUrl ?>" style="text-decoration:none;"><h3 class="nav-link">Home</h3></a>
+   <a href="<?= Url::to(['/site/about']) ?>" style="text-decoration:none;"><h3 class="nav-link">About</h3></a>
+   <a href="<?= Url::to(['/site/contact']) ?>" style="text-decoration:none;"><h3 class="nav-link">Contact</h3></a>
+</nav>
 
-<!-- DASHBOARD SECTION -->
-<section class="container py-5">
-    <div class="scroll-box">
-        <div class="scroll-text">📚Dashibodi ya Kanisa la waadventista wa sabato IZIWA-MBEYA,TANZANIA</div>
-    </div>
-    <div class="row g-4 text-center">
-        <div class="col-md-4 col-sm-4 col-4">
-            <div class="card dashboard-card h-100">
-                <div class="card-icon"><i class="bi bi-calendar2-check-fill"></i></div>
-                <h5>Matukio</h5>
-                <p>Ratiba ya mikutano, ubatizo, na shughuli muhimu za kanisa.</p>
-                <a href="<?= Url::to(['matukio/index']) ?>" class="btn btn-outline-primary w-100">Fungua</a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-4">
-            <div class="card dashboard-card h-100">
-                <div class="card-icon"><i class="bi bi-heart-pulse-fill"></i></div>
-                <h5>Huduma</h5>
-                <p>Huduma za vijana, wamama, wanaume, na vikundi mbalimbali.</p>
-                <a href="<?= Url::to(['huduma/index']) ?>" class="btn btn-outline-success w-100">Angalia</a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-4">
-            <div class="card dashboard-card h-100">
-                <div class="card-icon"><i class="bi bi-megaphone-fill"></i></div>
-                <h5>Matangazo</h5>
-                <p>Tangazo rasmi la kanisa linalohusu tukio au taarifa maalum.</p>
-                <a href="<?= Url::to(['matangazo/index']) ?>" class="btn btn-outline-primary w-100">Tazama Matangazo</a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-4">
-            <div class="card dashboard-card h-100">
-                <div class="card-icon"><i class="bi bi-people-fill"></i></div>
-                <h5>Washirika</h5>
-                <p>Orodha na taarifa muhimu za washirika wetu wa Iziwa.</p>
-                <a href="<?= Url::to(['washirika/index']) ?>" class="btn btn-outline-info w-100">Tazama</a>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ✅ Static Image Gallery (Now with Proper Aspect Ratio) -->
+<div class="static-images row">
+   <div class="col-md-4 col-sm-6 col-12">
+      <div class="img-wrapper">
+         <img src="<?= Url::to('@web/picha/kanisa1.jpg') ?>" alt="Kanisa 1">
+      </div>
+   </div>
+   <div class="col-md-4 col-sm-6 col-12">
+      <div class="img-wrapper">
+         <img src="<?= Url::to('@web/picha/kanisa2.jpg') ?>" alt="Kanisa 2">
+      </div>
+   </div>
+   <div class="col-md-4 col-sm-6 col-12">
+      <div class="img-wrapper">
+         <img src="<?= Url::to('@web/picha/kanisa3.jpg') ?>" alt="Kanisa 3">
+      </div>
+   </div>
+</div>
 
-<!-- QUICK LINKS -->
-<section class="quick-links">
-    <a href="https://255626618171" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-    <a href="https://facebook.com" title="Facebook"><i class="bi bi-facebook"></i></a>
-    <a href="https://instagram.com" title="Instagram"><i class="bi bi-instagram"></i></a>
-</section>
+<!-- ✅ Main Content & Dashboard Cards -->
+<main class="container">
+   <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+         <div class="dashboard-card">
+            <h5>Matukio</h5>
+            <p>Ratiba ya mikutano na ibada.</p>
+            <a href="<?= Url::to(['/matukio/index']) ?>" class="btn btn-outline-primary">Fungua</a>
+         </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+         <div class="dashboard-card">
+            <h5>Huduma</h5>
+            <p>Huduma mbalimbali za kanisa.</p>
+            <a href="<?= Url::to(['/huduma/index']) ?>" class="btn btn-outline-success">Angalia</a>
+         </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+         <div class="dashboard-card">
+            <h5>Matangazo</h5>
+            <p>Habari na matangazo rasmi ya kanisa.</p>
+            <a href="<?= Url::to(['/matangazo/index']) ?>" class="btn btn-outline-warning">Soma</a>
+         </div>
+      </div>
+   </div>
+</main>
 
-<!-- FOOTER -->
-<footer class="footer">
-    &copy; <?= date('Y') ?> Kanisa la Kisasa Iziwa | Imetengenezwa kwa Upendo 💙
+<footer>
+   &copy; <?= date('Y') ?> IZIWA SDA Church. All rights reserved.
 </footer>
 
-<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
